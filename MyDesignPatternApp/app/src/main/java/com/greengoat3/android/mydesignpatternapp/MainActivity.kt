@@ -3,6 +3,10 @@ package com.greengoat3.android.mydesignpatternapp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.greengoat3.android.mydesignpatternapp.abstractFactory.factory.AbstractFactory
+import com.greengoat3.android.mydesignpatternapp.abstractFactory.factory.AbstractLink
+import com.greengoat3.android.mydesignpatternapp.abstractFactory.factory.AbstractPage
+import com.greengoat3.android.mydesignpatternapp.abstractFactory.factory.AbstractTray
 import com.greengoat3.android.mydesignpatternapp.adapter.inst.PrintBanner
 import com.greengoat3.android.mydesignpatternapp.builder.Director
 import com.greengoat3.android.mydesignpatternapp.builder.TextBuilder
@@ -86,6 +90,19 @@ class MainActivity : AppCompatActivity() {
         director.construct()
         val result = textbuilder.getResult()
         Log.i("MainActivity", result)
+
+        AbstractFactory.getFactory("com.greengoat3.android.mydesignpatternapp.abstractFactory.listfactory.ListFactory")?.let {
+            val aa: AbstractLink = it.createLink("aa新聞", "test")
+            val bb: AbstractLink = it.createLink("bb新聞", "TEST")
+
+            val tray: AbstractTray = it.createTray("caption")
+            tray.add(aa)
+            tray.add(bb)
+
+            val page: AbstractPage = it.createPage("title", "author")
+            page.add(tray)
+            page.output()
+        }
 
     }
 }
