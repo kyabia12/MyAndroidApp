@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.greengoat3.android.mydesignpatternapp.adapter.inst.PrintBanner
+import com.greengoat3.android.mydesignpatternapp.builder.Director
+import com.greengoat3.android.mydesignpatternapp.builder.TextBuilder
 import com.greengoat3.android.mydesignpatternapp.factory.pc.PcFactory
 import com.greengoat3.android.mydesignpatternapp.iterator.book.Book
 import com.greengoat3.android.mydesignpatternapp.iterator.book.BookShelf
@@ -78,5 +80,12 @@ class MainActivity : AppCompatActivity() {
         p2.use("Hello, world")
         val p3:Product = manager.create("slash box")
         p3.use("Hello, world")
+
+        val textbuilder = TextBuilder()
+        val director = Director(textbuilder)
+        director.construct()
+        val result = textbuilder.getResult()
+        Log.i("MainActivity", result)
+
     }
 }
