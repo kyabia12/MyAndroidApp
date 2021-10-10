@@ -8,6 +8,9 @@ import com.greengoat3.android.mydesignpatternapp.abstractFactory.factory.Abstrac
 import com.greengoat3.android.mydesignpatternapp.abstractFactory.factory.AbstractPage
 import com.greengoat3.android.mydesignpatternapp.abstractFactory.factory.AbstractTray
 import com.greengoat3.android.mydesignpatternapp.adapter.inst.PrintBanner
+import com.greengoat3.android.mydesignpatternapp.bridge.CountDisplay
+import com.greengoat3.android.mydesignpatternapp.bridge.Display
+import com.greengoat3.android.mydesignpatternapp.bridge.StringDisplayImpl
 import com.greengoat3.android.mydesignpatternapp.builder.Director
 import com.greengoat3.android.mydesignpatternapp.builder.TextBuilder
 import com.greengoat3.android.mydesignpatternapp.factory.pc.PcFactory
@@ -104,5 +107,9 @@ class MainActivity : AppCompatActivity() {
             page.output()
         }
 
+        val d1 = Display(StringDisplayImpl("Hello"))
+        val d2 = CountDisplay(StringDisplayImpl("TEST"))
+        d1.display()
+        d2.multiDisplay(2)
     }
 }
