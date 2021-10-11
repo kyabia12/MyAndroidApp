@@ -1,5 +1,6 @@
 package com.greengoat3.android.mydesignpatternapp
 
+import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -21,6 +22,9 @@ import com.greengoat3.android.mydesignpatternapp.prototype.MessageBox
 import com.greengoat3.android.mydesignpatternapp.prototype.Product
 import com.greengoat3.android.mydesignpatternapp.prototype.UnderlinePen
 import com.greengoat3.android.mydesignpatternapp.singleton.Singleton
+import com.greengoat3.android.mydesignpatternapp.strategy.Player
+import com.greengoat3.android.mydesignpatternapp.strategy.ProbStrategy
+import com.greengoat3.android.mydesignpatternapp.strategy.WinnerStrategy
 import com.greengoat3.android.mydesignpatternapp.templatemehod.AbstractDisplay
 import com.greengoat3.android.mydesignpatternapp.templatemehod.CharDisplay
 import com.greengoat3.android.mydesignpatternapp.templatemehod.StringDisplay
@@ -111,5 +115,30 @@ class MainActivity : AppCompatActivity() {
         val d2 = CountDisplay(StringDisplayImpl("TEST"))
         d1.display()
         d2.multiDisplay(2)
+
+        val player1 = Player("taro",WinnerStrategy())
+        val player2 = Player("hanako", ProbStrategy())
+
+        for (i in 0..100) {
+            val nextHand1 = player1.nextHand()
+            val nextHand2 = player2.nextHand()
+
+            when {
+                nextHand1.isStrongerThan(nextHand2) -> {
+                    player1.win()
+                    player2.lose()
+                }
+                nextHand2.isStrongerThan(nextHand1) -> {
+                    player1.lose()
+                    player2.win()
+                }
+                else -> {
+                    player1.even()
+                    player2.even()
+                }
+            }
+        }
+        Log.i("MainActivity", player1.toString())
+        Log.i("MainActivity", player2.toString())
     }
 }
