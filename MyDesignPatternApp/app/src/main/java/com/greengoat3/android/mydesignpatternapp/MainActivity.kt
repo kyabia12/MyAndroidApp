@@ -14,6 +14,9 @@ import com.greengoat3.android.mydesignpatternapp.bridge.Display
 import com.greengoat3.android.mydesignpatternapp.bridge.StringDisplayImpl
 import com.greengoat3.android.mydesignpatternapp.builder.Director
 import com.greengoat3.android.mydesignpatternapp.builder.TextBuilder
+import com.greengoat3.android.mydesignpatternapp.composite.Directory
+import com.greengoat3.android.mydesignpatternapp.composite.File
+import com.greengoat3.android.mydesignpatternapp.composite.FileTreatmentException
 import com.greengoat3.android.mydesignpatternapp.factory.pc.PcFactory
 import com.greengoat3.android.mydesignpatternapp.iterator.book.Book
 import com.greengoat3.android.mydesignpatternapp.iterator.book.BookShelf
@@ -140,5 +143,18 @@ class MainActivity : AppCompatActivity() {
         }
         Log.i("MainActivity", player1.toString())
         Log.i("MainActivity", player2.toString())
+
+        try {
+            val rootDir = Directory("root")
+            val binDir = Directory("bin")
+            val tmpDir = Directory("tmp")
+            rootDir.add(binDir)
+            binDir.add(tmpDir)
+            binDir.add(File("vi", 1000))
+            rootDir.printList()
+        } catch (e: FileTreatmentException) {
+            Log.e("MainActivity", e.toString())
+        }
+
     }
 }
