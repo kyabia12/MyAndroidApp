@@ -3,7 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/kamiz/OneDrive/Desktop/AndroidApp/MyWeatherApp/app/src/main/res/layout/search_fragment.xml" value="0.23052536231884058" />
+        <entry key="..\:/Users/kamiz/OneDrive/Desktop/AndroidApp/MyWeatherApp/app/src/main/res/drawable/ic_broken_image.xml" value="0.1" />
+        <entry key="..\:/Users/kamiz/OneDrive/Desktop/AndroidApp/MyWeatherApp/app/src/main/res/drawable/loading_animation.xml" value="0.1" />
+        <entry key="..\:/Users/kamiz/OneDrive/Desktop/AndroidApp/MyWeatherApp/app/src/main/res/drawable/loading_image.xml" value="0.1" />
+        <entry key="..\:/Users/kamiz/OneDrive/Desktop/AndroidApp/MyWeatherApp/app/src/main/res/layout/activity_main.xml" value="0.23052536231884058" />
+        <entry key="..\:/Users/kamiz/OneDrive/Desktop/AndroidApp/MyWeatherApp/app/src/main/res/layout/result_list_item.xml" value="0.1279128672745694" />
+        <entry key="..\:/Users/kamiz/OneDrive/Desktop/AndroidApp/MyWeatherApp/app/src/main/res/layout/search_fragment.xml" value="0.1" />
       </map>
     </option>
   </component>

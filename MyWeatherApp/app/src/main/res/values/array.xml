@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="city_array">
+        <item>--- 都市を選らんでください　---</item>
+        <item>東京</item>
+        <item>大阪</item>
+        <item>愛知</item>
+    </string-array>
+</resources>
