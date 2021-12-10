@@ -23,10 +23,10 @@ class WeatherApiRepository {
             .create(WeatherAPiService::class.java)
     }
 
-    suspend fun getWeatherInfo(): OneCallApiResponse? {
+    suspend fun getWeatherInfo(lon: Double, lat: Double): OneCallApiResponse? {
         return withContext(Dispatchers.IO) {
             var info: OneCallApiResponse? = null
-            val response = apiService.getOneCallData()
+            val response = apiService.getOneCallData(lon, lat)
 
             if (response.isSuccessful) {
                 info = response.body()

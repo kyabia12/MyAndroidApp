@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.greengoat3.android.myweatherapp.databinding.ResultListItemBinding
 import com.greengoat3.android.myweatherapp.logic.HourlyResponse
 import com.greengoat3.android.myweatherapp.logic.OneCallApiResponse
+import java.text.SimpleDateFormat
+import java.util.*
 
 private object DiffCallback : DiffUtil.ItemCallback<HourlyResponse>() {
     override fun areItemsTheSame(oldItem: HourlyResponse, newItem: HourlyResponse): Boolean {
@@ -25,8 +27,14 @@ class ResultListAdapter :
     class MarsPropertyViewHolder(private var binding: ResultListItemBinding):
         RecyclerView.ViewHolder(binding.root) {
         fun bind(marsProperty: HourlyResponse) {
+
+            val sdf = SimpleDateFormat("yyyy-MM-dd kk:mm", Locale.JAPAN)
+            val nowTime = Date(marsProperty.dt * 1000L)
+            val time = sdf.format(nowTime)
             binding.property = marsProperty
             binding.icon = "http://openweathermap.org/img/wn/${marsProperty.weather[0].icon}.png"
+            binding.tvTime.text = time
+            binding.tvWeather.text = marsProperty.weather[0].description
             binding.executePendingBindings()
         }
     }

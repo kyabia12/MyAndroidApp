@@ -4,16 +4,17 @@ import android.widget.ImageView
 import androidx.core.net.toUri
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.greengoat3.android.myweatherapp.logic.HourlyResponse
 import com.greengoat3.android.myweatherapp.ui.ResultListAdapter
+
+val imgUrlList = mutableListOf<String>()
 
 @BindingAdapter("imageUrl")
 fun bindImage(imgView: ImageView, imgUrl: String?) {
     imgUrl?.let {
         val imgUri = imgUrl.toUri().buildUpon().scheme("https").build()
-        Glide.with(imgView.context)
+        GlideApp.with(imgView.context)
             .load(imgUri)
             .apply(
                 RequestOptions()

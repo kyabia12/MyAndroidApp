@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  dbserver:
+    container_name: mysql5.7
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: test_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: rootpassword
+    expose:
+      - 3306
+    ports:
+      - 3306:3306
+    volumes:
+      # 起動スクリプト
+      # - ./docker-compose/mysql/initdb:/docker-entrypoint-initdb.d
+      # MySQLの設定ファイル
+      - ./mysql/config:/etc/mysql/conf.d
+  spring-demo:
+    container_name: spring-demo
+    depends_on:
+      # dbserverが起動してから、appを起動
+      - dbserver
+    build:
+      context: ./demo
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
